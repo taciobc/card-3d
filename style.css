@@ -1,3 +1,4 @@
+/*
 :root {
     --card-height: 300px;
     --card-width: calc(var(--card-height) / 1.5);
@@ -13,6 +14,19 @@ body {
     background: #191c19;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.grid-container > div {
+    background-color: rgba(37, 33, 33, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
 .card {
     width: var(--card-width);
     height: var(--card-height);
@@ -24,24 +38,25 @@ body {
     perspective: 2500px;
     margin: 0 50px;
     cursor: pointer;
+    
 }
 
 .cover-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+}    
 
 .wrapper {
     transition: all 0.5s;
     position: absolute;
     width: 100%;
-    z-index: -1;
+    z-index: -1;         
 }
 
 .wrapper::before, 
 .wrapper::after {
-    content: '';
+    content: ' ';
     opacity: 0;
     width: 100%;
     height: 80px;
@@ -67,7 +82,7 @@ body {
 }
 
 .title {
-    width: 100%;
+    width: 100px;
     transition: transform 0.5s;
     
 }
@@ -78,6 +93,7 @@ body {
     position: absolute;
     z-index: -1;
     transition: all 0.5s;
+    
 }
 
 .card:hover .wrapper {
@@ -88,6 +104,7 @@ body {
 
 .card:hover .title {
     transform: translate3d(0%, -50%, 100px);
+    
 }
 
 .card:hover .wrapper::after,
@@ -106,4 +123,186 @@ body {
 .card:hover .character {
     opacity: 1;
     transform: translate3d(0%, -30%, -100px);
+}
+
+
+@media screen and (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+*/
+
+
+:root {
+    --card-height: 300px;
+    --card-width: calc(var(--card-height) / 1.5);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://images.pexels.com/photos/18011182/pexels-photo-18011182/free-photo-of-black-and-white-mountains-river-moon.jpeg), url(paper.gif);
+   
+    background-repeat: no-repeat, repeat;
+    
+}
+
+.titulo {
+    font-size: 100px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    text-align: center;  
+    color: darkgoldenrod;
+    box-shadow:0px 35px 32px -8px rgb(0, 0, 0, 0.75) ;
+    margin-bottom: 140px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 80px;
+}
+
+.grid-container > div {
+    /*background-color: rgba(19, 17, 17, 0.8);*/
+    background-image: linear-gradient
+    (to top, transparent 46%, rgb(12, 13, 19, 0.5) 68%, rgb(12, 13, 19) 97%);
+    text-align: center;
+    padding: 40px 0;
+    font-size: 30px;
+}
+
+
+
+.card {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 36px;
+    perspective: 2500px;
+    margin: 0 50px;
+    cursor: pointer;
+}
+
+.cover-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.wrapper {
+    transition: all 0.5s;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.wrapper::before,
+.wrapper::after {
+    content: '';
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
+}
+
+.wrapper::before {
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient
+    (to top, transparent 46%, rgb(12, 13, 19, 0.5) 68%, rgb(12, 13, 19) 97%);
+}
+
+.wrapper::after {
+    bottom: 0;
+    opacity: 0;
+    background-image: linear-gradient
+    (to top, transparent 46%, rgb(12, 13, 19, 0.5) 68%, rgb(12, 13, 19) 97%);
+}
+
+.title {
+    width: 100px;
+    margin-bottom: -15px;
+    transition: transform 0.5s;
+    text-align: center;
+}
+
+h2  {
+    margin: 0;
+    font-size: 10 50px;
+    font-weight: 900;
+    margin-left: -70px;
+    color: rgba(54, 50, 42, 0.945);
+    
+    
+    
+    
+}
+
+.character {
+    width: 100%;
+    height: 430px;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+.card:hover .wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 0px 35px 32px -8px rgb(0, 0, 0, 0.75);
+}
+
+.card:hover .title {
+    transform: translate3d(0%, -10%, 100px);
+    
+}
+
+.card:hover .wrapper::after,
+.wrapper::before {
+    opacity: 1;
+}
+
+.card:hover .wrapper::after {
+    height: 120px;
+}
+
+.card:hover .wrapper::before {
+    opacity: 1;
+}
+
+.card:hover .character {
+    opacity: 1;
+    transform: translate3d(0%, -30%, -100px);
+}
+
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .card {
+        margin: 0 10px;
+    }
 }

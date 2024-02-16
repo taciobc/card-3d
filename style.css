@@ -152,6 +152,15 @@ body {
     
 }
 
+.logo {
+    font-weight: 900;
+    font-size: 25px;
+    color: aliceblue;
+    margin: 20px;
+    
+}
+
+
 .titulo {
     font-size: 100px;
     font-weight: 600;
